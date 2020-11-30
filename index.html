@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>What's Up?</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js" defer></script>
+    <script src="js/app.js" defer></script>
+
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+       <a class="navbar-brand" href="#">What's Up?</a>
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+       </button>
+       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+             <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+             </li>
+             <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+             </li>
+          </ul>
+       </div>
+    </nav>
+
+    <div id="app">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <div class="row">
+          <div class="col-3"><img class="img-thumbnail" v-bind:src="pic" alt="Me"></div>
+          <div class="col">
+            <h1>{{ author }}</h1>
+            <p class="lead">{{ bio }}</p>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <form class="form-inline" v-on:submit.prevent="tweets.push(newTweet)">
+           <label for="tweetText" class="mb-2 mr-sm-2">New Tweet</label>
+           <input type="text" name="tweet" v-model="newTweet" class="form-control mb-2 mr-sm-2" id="tweetText" placeholder="Write something...">
+         <button type="submit" class="btn btn-primary mb-2">Submit</button>
+        </form>
+        <tweet v-for="tweet in tweets" v-bind:author="author" v-bind:tweet="tweet"></tweet>
+      <br>
+      <hr>
+      </div>
+    </div>
+    <div class="container">
+       <div class="row">
+          <div class="text-center col-lg-6 offset-lg-3">
+             <h4>Footer </h4>
+             <p>Copyright &copy; 2020 &middot; All Rights Reserved &middot; <a href="https://pavelshlepnev.ru.com" >My Website</a></p>
+          </div>
+       </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+    <script src="js/jquery-3.4.1.min.js"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed --> 
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap-4.4.1.js"></script>
+  </body>
+</html>
